@@ -1,8 +1,7 @@
 package com.pleaseconvert.conversion;
 
-import com.pleaseconvert.model.Conversion;
 import com.pleaseconvert.model.ConversionCategory;
-import com.pleaseconvert.model.CurrencyConversions;
+import com.pleaseconvert.model.CurrencyConversion;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,8 +14,8 @@ public class ConversionFactoryImpl implements ConversionFactory {
     ConversionCategory conversionCategory = ConversionCategory.findByName(conversionCategoryName);
     switch (conversionCategory) {
       case CURRENCY:
-        return Arrays.stream(CurrencyConversions.values())
-            .map(CurrencyConversions::getName)
+        return Arrays.stream(CurrencyConversion.values())
+            .map(CurrencyConversion::getName)
             .collect(Collectors.toList());
       case TEMPERATURE:
         break;

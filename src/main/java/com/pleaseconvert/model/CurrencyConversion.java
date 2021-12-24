@@ -1,6 +1,6 @@
 package com.pleaseconvert.model;
 
-public enum CurrencyConversions {
+public enum CurrencyConversion {
   USD_TO_INR("USD_TO_INR"),
   INR_TO_USD("INR_TO_USD"),
   USD_TO_POUND("USD_TO_POUND"),
@@ -10,7 +10,7 @@ public enum CurrencyConversions {
 
   private final String name;
 
-  CurrencyConversions(String name) {
+  CurrencyConversion(String name) {
     this.name = name;
   }
 
