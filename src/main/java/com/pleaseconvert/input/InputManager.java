@@ -1,4 +1,7 @@
 package com.pleaseconvert.input;
 
-public class InputManager {
+import com.pleaseconvert.model.ConversionInput;
+
+public interface InputManager {
+  ConversionInput getConversionInput();
 }
