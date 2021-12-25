@@ -1,5 +1,7 @@
 package com.pleaseconvert.model;
 
+import java.util.Arrays;
+
 public enum CurrencyConversion {
   USD_TO_INR("USD_TO_INR"),
   INR_TO_USD("INR_TO_USD"),
@@ -16,5 +18,12 @@ public enum CurrencyConversion {
 
   public String getName() {
     return name;
+  }
+
+  public static CurrencyConversion findByName(String name) {
+    return Arrays.stream(CurrencyConversion.values())
+        .filter(currencyConversion -> currencyConversion.getName().equalsIgnoreCase(name))
+        .findFirst()
+        .orElse(null);
   }
 }
