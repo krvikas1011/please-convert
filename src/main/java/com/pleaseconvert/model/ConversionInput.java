@@ -11,4 +11,19 @@ public class ConversionInput {
   String conversionCategory;
   String conversion;
   String input;
+
+  @Override
+  public String toString() {
+    return "ConversionInput{"
+        + "conversionCategory='"
+        + conversionCategory
+        + '\''
+        + ", conversion='"
+        + conversion
+        + '\''
+        + ", input='"
+        + input
+        + '\''
+        + '}';
+  }
 }

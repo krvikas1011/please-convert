@@ -7,8 +7,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputManagerImpl implements InputManager {
+
+  private final ConversionDefinition conversionDefinition;
+
+  public InputManagerImpl(ConversionDefinition conversionDefinition) {
+    this.conversionDefinition = conversionDefinition;
+  }
+
   @Override
-  public ConversionInput getConversionInput(ConversionDefinition conversionDefinition) {
+  public ConversionInput getConversionInput() {
     Scanner sc = new Scanner(System.in);
     System.out.println("Please choose the category to convert: ");
     List<String> supportedConversionCategoriesList =
@@ -26,8 +33,6 @@ public class InputManagerImpl implements InputManager {
     String conversionForCategoryInput = sc.next();
     System.out.println("Please enter the value to convert: ");
     String input = sc.next();
-    ConversionInput conversionInput =
-        new ConversionInput(conversionCategoryInput, conversionForCategoryInput, input);
-    return conversionInput;
+    return new ConversionInput(conversionCategoryInput, conversionForCategoryInput, input);
   }
 }

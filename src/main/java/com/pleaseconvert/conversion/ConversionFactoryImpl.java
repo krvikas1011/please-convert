@@ -28,14 +28,14 @@ public class ConversionFactoryImpl implements ConversionFactory {
         break;
       case TIME:
         conversions =
-            Arrays.stream(WeightConversion.values())
-                .map(WeightConversion::getName)
+            Arrays.stream(TimeConversion.values())
+                .map(TimeConversion::getName)
                 .collect(Collectors.toList());
         break;
       case WEIGHT:
         conversions =
-            Arrays.stream(TimeConversion.values())
-                .map(TimeConversion::getName)
+            Arrays.stream(WeightConversion.values())
+                .map(WeightConversion::getName)
                 .collect(Collectors.toList());
         break;
       case DISTANCE:
