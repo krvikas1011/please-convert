@@ -9,20 +9,24 @@ import java.util.Scanner;
 public class InputManagerImpl implements InputManager {
 
   private final ConversionDefinition conversionDefinition;
+  private final UserInputHandler userInputHandler;
 
-  public InputManagerImpl(ConversionDefinition conversionDefinition) {
+  public InputManagerImpl(
+      ConversionDefinition conversionDefinition, UserInputHandler userInputHandler) {
     this.conversionDefinition = conversionDefinition;
+    this.userInputHandler = userInputHandler;
   }
 
   @Override
   public ConversionInput getConversionInput() {
     Scanner sc = new Scanner(System.in);
-    System.out.println("Please choose the category to convert: ");
+    userInputHandler.printInputRequest("Please choose the category");
     List<String> supportedConversionCategoriesList =
         conversionDefinition.getAllSupportedConversionsCategories();
     for (String conversionCategory : supportedConversionCategoriesList) {
-      System.out.println(conversionCategory);
+      userInputHandler.printInputRequest(conversionCategory);
     }
+    userInputHandler.printInputRequest("Input: ");
     String conversionCategoryInput = sc.next();
     if (!supportedConversionCategoriesList.contains(conversionCategoryInput)) {
       System.out.println("Bad Input!");
@@ -30,16 +34,16 @@ public class InputManagerImpl implements InputManager {
     }
     List<String> conversionForCategoryList =
         conversionDefinition.getConversionsForConversionsCategory(conversionCategoryInput);
-    System.out.println("Please choose the " + conversionCategoryInput + " unit to convert: ");
+    userInputHandler.takeInput(conversionCategoryInput);
     for (String conversionForCategory : conversionForCategoryList) {
-      System.out.println(conversionForCategory);
+      userInputHandler.printInputRequest(conversionForCategory);
     }
     String conversionForCategoryInput = sc.next();
     if (!conversionForCategoryList.contains(conversionForCategoryInput)) {
       System.out.println("Bad Input!");
       return new ConversionInput();
     }
-    System.out.println("Please enter the value to convert: ");
+    userInputHandler.printInputRequest("Please enter the value: ");
     String input = sc.next();
     return new ConversionInput(conversionCategoryInput, conversionForCategoryInput, input);
   }
