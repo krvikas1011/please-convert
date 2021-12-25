@@ -24,6 +24,10 @@ public class InputManagerImpl implements InputManager {
       System.out.println(conversionCategory);
     }
     String conversionCategoryInput = sc.next();
+    if (!supportedConversionCategoriesList.contains(conversionCategoryInput)) {
+      System.out.println("Bad Input!");
+      return new ConversionInput();
+    }
     List<String> conversionForCategoryList =
         conversionDefinition.getConversionsForConversionsCategory(conversionCategoryInput);
     System.out.println("Please choose the " + conversionCategoryInput + " unit to convert: ");
@@ -31,6 +35,10 @@ public class InputManagerImpl implements InputManager {
       System.out.println(conversionForCategory);
     }
     String conversionForCategoryInput = sc.next();
+    if (!conversionForCategoryList.contains(conversionForCategoryInput)) {
+      System.out.println("Bad Input!");
+      return new ConversionInput();
+    }
     System.out.println("Please enter the value to convert: ");
     String input = sc.next();
     return new ConversionInput(conversionCategoryInput, conversionForCategoryInput, input);
