@@ -8,6 +8,12 @@ import java.util.stream.Collectors;
 
 public class ConversionDefinitionImpl implements ConversionDefinition {
 
+  private final ConversionFactory conversionFactory;
+
+  public ConversionDefinitionImpl(ConversionFactory conversionFactory) {
+    this.conversionFactory = conversionFactory;
+  }
+
   @Override
   public List<String> getAllSupportedConversionsCategories() {
     return Arrays.stream(ConversionCategory.values())
@@ -17,6 +23,6 @@ public class ConversionDefinitionImpl implements ConversionDefinition {
 
   @Override
   public List<String> getConversionsForConversionsCategory(String conversionCategory) {
-    return null;
+    return conversionFactory.getAllConversionsForConversionCategory(conversionCategory);
   }
 }
